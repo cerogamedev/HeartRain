@@ -11,11 +11,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        column = columns[index];
-        this.transform.position = new Vector2(column.transform.position.x, this.transform.position.y);
-        if (InputHandler.Instance.GoRight && index < columns.Length - 1)
-            index++;
-        if (InputHandler.Instance.GoLeft && index >= 1)
-            index -= 1;
+        if (GameManager.Instance.isGameStart)
+        {
+            column = columns[index];
+            this.transform.position = new Vector2(column.transform.position.x, this.transform.position.y);
+            if (InputHandler.Instance.GoRight && index < columns.Length - 1)
+            {
+                index++;
+                AudioManager.Instance.ButtonPlaySound();
+            }
+            if (InputHandler.Instance.GoLeft && index >= 1)
+            {
+                AudioManager.Instance.ButtonPlaySound();
+
+                index -= 1;
+            }
+        }
+
     }
 }

@@ -19,12 +19,16 @@ public class PlayerObserver : MonoSingleton<PlayerObserver>
         {
             HeartHere?.Invoke();
             Debug.Log("HeartHere!");
+            AudioManager.Instance.HeartPlaySound();
+            Destroy(collision);
         }
         if (collision.transform.CompareTag("BadBall"))
         {
             Debug.Log("CircleHere!");
 
             CircleHere?.Invoke();
+            Destroy(collision);
+
         }
     }
 }

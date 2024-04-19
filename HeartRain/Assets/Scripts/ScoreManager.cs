@@ -40,6 +40,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
             PlayerPrefs.SetInt("HighScore", HighScore);
         }
         ResetTheScore();
+        AudioManager.Instance.GameOverPlaySound();
     }
     public void ResetTheScore()
     {
